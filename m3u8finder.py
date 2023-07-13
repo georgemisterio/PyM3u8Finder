@@ -162,8 +162,14 @@ entry_url.configure(bg='grey',fg='white')
 entry_url.pack()
 
 # Crear botón para buscar la dirección m3u8
-btn_buscar = tk.Button(window, text='Buscar dirección m3u8', command=buscar_direccion)
-btn_buscar.configure(bg='grey',ng='white')
+
+s = ttk.Style()
+s.configure("Search.TButton", foreground="grey",background="#42413f")
+s.map("Search.TButton", foreground=[("active", "cyan")],background=[("pressed", "#525151")])
+# boton = ttk.Button(text="¡Hola, mundo!", style="Search.TButton")
+
+btn_buscar = ttk.Button(window, text='Buscar dirección m3u8', style="Search.TButton",command=buscar_direccion)
+# btn_buscar.configure(bg='grey',fg='white')
 btn_buscar.pack()
 
 # Crear ProgressBar indefinido
@@ -172,10 +178,11 @@ progress_bar.pack()
 
 # Crear etiqueta para mostrar la dirección m3u8
 label_direccion = tk.Label(window, text='', justify='left', wraplength=380)
+label_direccion.configure(bg ='grey',fg ='white')
 label_direccion.pack()
 
 # Crear botón para copiar al portapapeles
-btn_copiar = tk.Button(window, text='Copiar al portapapeles', command=copiar_portapapeles)
+btn_copiar = ttk.Button(window, text='Copiar al portapapeles', command=copiar_portapapeles, style="Search.TButton")
 btn_copiar.pack()
 
 # Iniciar el bucle principal de la interfaz
